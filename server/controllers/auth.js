@@ -37,3 +37,21 @@ export const register = async (req, res) => {
     res.status(500).json({ error: err.message }); // mongoDB error send to client
   }
 };
+
+// LOGIN USER
+export const login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const user = await User.findOne({ email }); // find user in database
+    if (!user) return res.status(400).json({ msg: 'User does not exist.' }); // if user not found send error to client
+
+    const isMatch = await bcrypt.compare(password, user.password); // compare passwords
+    if (!isMatch) return res.status(400).json({ msg: 'Invalid credentials.' }); // if passwords don't match send error to client
+
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET); // create token
+    delete user.password; // delete password from user object
+    res.status(200).json({ token, user }); // send token and user to client
+  } catch (err) {
+    res.status(500).json({ error: err.message }); // mongoDB error send to client
+  }
+};
