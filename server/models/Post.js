@@ -1,31 +1,41 @@
-const { Schema } = require('mongoose');
+const { Schema,  model } = require('mongoose');
+const commentSchema = require('./Comment');
+const dateFormat = require('../utils/dateFormat');
+
 
 // This is a subdocument schema, it won't become its own model but we'll use it as the schema for the User's `savedBooks` array in User.js
-const bookSchema = new Schema({
-  authors: [
-    {
-      type: String,
-    },
-  ],
-  description: {
+const postSchema = new Schema({
+  postText: {
     type: String,
-    required: true,
+    required: 'Tell us how you really feal',
+    minlength: 1,
+    maxlength: 280
   },
-  // saved book id from GoogleBooks
-  bookId: {
-    type: String,
-    required: true,
+  createdAt: {
+    type: Date,
+    default: Date.now,
+    get: timestamp => dateFormat(timestamp)
   },
-  image: {
-    type: String,
+  username: {
+    type: String
   },
-  link: {
-    type: String,
+  likes: {
+    type: Object
   },
-  title: {
-    type: String,
-    required: true,
+  comments: [commentSchema],
+
+  userPicturePath: {
+    type: String
   },
+  picturePath: {
+    type: String
+  }
 });
 
-module.exports = bookSchema;
+postSchema.virtual('commentCount').get(function() {
+  return this.comments.length;
+});
+
+const Post = model('Post', postSchema);
+
+module.exports = postSchema;

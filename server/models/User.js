@@ -10,6 +10,14 @@ const userSchema = new Schema(
       required: true,
       unique: true,
     },
+    firstName: {
+      type: String,
+      required: true,
+    },
+    lastName: {
+      type: String,
+      required: true,
+    },
     email: {
       type: String,
       required: true,
@@ -20,8 +28,36 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    savedPosts: [postSchema]
+    picturePath: {
+      type: String,
+      required: false,
+    },
+    location: {
+      type: String,
+      required: false,
+    },
+    occupation: {
+      type: String,
+      required: false,
+    },
+    viewedProfile: {
+      type: Number,
+      required: false,
+    },
+    impressions: {
+      type: Number,
+      required: false,
+    },
+    friends: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+      },
+    ],
+    posts: [postSchema],
   },
+
+
   // set this to use virtual below
   {
     toJSON: {
@@ -45,9 +81,8 @@ userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-// when we query a user, we'll also get another field called `bookCount` with the number of saved books we have
-userSchema.virtual('bookCount').get(function () {
-  return this.savedBooks.length;
+userSchema.virtual('friendCount').get(function () {
+  return this.friends.length;
 });
 
 const User = model('User', userSchema);
