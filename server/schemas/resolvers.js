@@ -92,19 +92,23 @@ const resolvers = {                                 // resolvers is an object th
 
         addPost: async (parent, args, context) => {         // addPost is a function that takes in parent, args, and context and returns a post object
             if (context.user) {
-                const thought = await Post.create({ ...args, username: context.user.username });   
-
-                await User.findByIdAndUpdate(
+                const updatedUser = await User.findOneAndUpdate(
                     { _id: context.user._id },
-                    { $push: { posts: post._id } },
+                    { $addToSet: { savedPosts: args.newPost } },
                     { new: true }
-                );
+                ).populate('posts');
+            
+                const post = await Post.create({ ...args, username: context.user.username });
 
-                return thought;
+                return post;
             }
 
             throw new AuthenticationError('You need to be logged in!');
         },
+
+
+
+
         addComment: async (parent, { postId, commentText }, context) => {
             if (context.user) {
                 const updatedPost = await Post.findOneAndUpdate(
