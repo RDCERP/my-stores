@@ -8,6 +8,12 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import authRoutes from './routes/auth.js';
+import userRoutes from './routes/users.js';
+import postRoutes from './routes/posts.js';
+import { register } from './controllers/auth.js';
+import { createPost } from './controllers/posts.js';
+import { verifyToken } from './controllers/middleware/auth.js';
 
 // CONFIGURATION
 const __filename = fileURLToPath(import.meta.url);
@@ -36,24 +42,23 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-// const express = require('express');
-// const path = require('path');
-// const db = require('./config/connection');
-// const routes = require('./routes');
+// ROUTES WITH FILES
+app.post('/auth/register', upload.single('picture'), register);
+app.post('/posts', verifyToken, upload.single('picture'), createPost);
 
-// const app = express();
-// const PORT = process.env.PORT || 3001;
+// ROUTES
+app.use('/auth', authRoutes);
+app.use('/users', userRoutes);
+app.use('/posts', postRoutes);
 
-// app.use(express.urlencoded({ extended: true }));
-// app.use(express.json());
-
-// // if we're in production, serve client/build as static assets
-// if (process.env.NODE_ENV === 'production') {
-//   app.use(express.static(path.join(__dirname, '../client/build')));
-// }
-
-// app.use(routes);
-
-// db.once('open', () => {
-//   app.listen(PORT, () => console.log(`🌍 Now listening on localhost:${PORT}`));
-// });
+// MONGOOSE SETUP
+const PORT = process.env.PORT || 6001;
+mongoose
+  // .connect(process.env.MONGO_URI, {
+  .connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
+  });

@@ -1,14 +1,18 @@
-const { Schema, model } = require('mongoose');
-const bcrypt = require('bcrypt');
+import mongoose from 'mongoose';
 
-const postSchema = require('./Post');
-
-const userSchema = new Schema(
+const UserSchema = new mongoose.Schema(
   {
-    username: {
+    firstName: {
       type: String,
       required: true,
-      unique: true,
+      min: 2,
+      max: 50,
+    },
+    lastName: {
+      type: String,
+      required: true,
+      min: 2,
+      max: 50,
     },
     firstName: {
       type: String,
@@ -21,70 +25,29 @@ const userSchema = new Schema(
     email: {
       type: String,
       required: true,
+      max: 50,
       unique: true,
-      match: [/.+@.+\..+/, 'Must use a valid email address'],
     },
     password: {
       type: String,
       required: true,
+      min: 5,
     },
     picturePath: {
       type: String,
-      required: false,
+      default: '',
     },
-    location: {
-      type: String,
-      required: false,
+    friends: {
+      type: Array,
+      default: [],
     },
-    occupation: {
-      type: String,
-      required: false,
-    },
-    viewedProfile: {
-      type: Number,
-      required: false,
-    },
-    impressions: {
-      type: Number,
-      required: false,
-    },
-    friends: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-      },
-    ],
-    posts: [postSchema],
+    location: String,
+    occupation: String,
+    viewedProfile: Number,
+    impressions: Number,
   },
-
-
-  // set this to use virtual below
-  {
-    toJSON: {
-      virtuals: true,
-    },
-  }
+  { timestamps: true }
 );
 
-// hash user password
-userSchema.pre('save', async function (next) {
-  if (this.isNew || this.isModified('password')) {
-    const saltRounds = 10;
-    this.password = await bcrypt.hash(this.password, saltRounds);
-  }
-
-  next();
-});
-
-// custom method to compare and validate password for logging in
-userSchema.methods.isCorrectPassword = async function (password) {
-  return bcrypt.compare(password, this.password);
-};
-
-userSchema.virtual('friendCount').get(function () {
-  return this.friends.length;
-});
-
-const User = model('User', userSchema);
-
-module.exports = User;
+const User = mongoose.model('User', UserSchema);
+export default User;
