@@ -9,3 +9,12 @@ const StyledNavbar = styled.nav`
   justify-content: space-between;
   padding: 1rem;
 `;
+
+const NavList = styled.ul`
+  list-style: none;
+  display: flex;
+`;
+
+const NavListItem = styled.li`
+  margin-right: 1rem;
+`;
