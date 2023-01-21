@@ -1,10 +1,21 @@
-import react from 'react';
+import React, { Component } from 'react';
+import styled from 'styled-components';
 
-const Footer = () => {
+const StyledFooter = styled.footer`
+  background-color: #333;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+`;
+
+class Footer extends Component {
+  render() {
     return (
-        <h1>Mohammad</h1>
-    )
-
+      <StyledFooter>
+        <p>Copyright © {new Date().getFullYear()} My Company</p>
+      </StyledFooter>
+    );
+  }
 }
 
 export default Footer;
