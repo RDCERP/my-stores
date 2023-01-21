@@ -18,3 +18,17 @@ const NavList = styled.ul`
 const NavListItem = styled.li`
   margin-right: 1rem;
 `;
+class Navbar extends Component {
+    render() {
+      return (
+        <StyledNavbar>
+          <h1>My App</h1>
+          <NavList>
+            <NavListItem><Link to="/">Home</Link></NavListItem>
+            <NavListItem><Link to="/about">About</Link></NavListItem>
+            <NavListItem><Link to="/contact">Contact</Link></NavListItem>
+          </NavList>
+        </StyledNavbar>
+      );
+    }
+  }
