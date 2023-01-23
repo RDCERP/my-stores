@@ -12,7 +12,7 @@ class Footer extends Component {
   render() {
     return (
       <StyledFooter>
-        <p>Copyright © {new Date().getFullYear()} My Company</p>
+        <p>Copyright © {new Date().getFullYear()}Group 3 Project</p>
       </StyledFooter>
     );
   }

@@ -22,7 +22,7 @@ class Navbar extends Component {
     render() {
       return (
         <StyledNavbar>
-          <h1>My App</h1>
+          <h1>My Stores</h1>
           <NavList>
             <NavListItem><Link to="/">Home</Link></NavListItem>
             <NavListItem><Link to="/about">About</Link></NavListItem>
