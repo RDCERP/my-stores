@@ -4,6 +4,3 @@
   },
   "include": ["src"]
 }
-
-// This allows us to import modules from the src folder using absolute paths
-// e.g. import { foo } from 'components/foo'
