@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './style.css'
 // import styled from 'styled-components';
 
 // const StyledFooter = styled.footer`
@@ -13,7 +14,7 @@ class Footer extends Component {
     return (
       <div>
       {/* <StyledFooter> */}
-        <p>Copyright © {new Date().getFullYear()}Group 3 Project</p>
+        <p className='footer'>Copyright © {new Date().getFullYear()}Group 3 Project</p>
       {/* </StyledFooter> */}
       </div>
     );
