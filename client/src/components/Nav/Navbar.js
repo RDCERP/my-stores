@@ -3,6 +3,11 @@ import { Button } from '../Button/Button';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import Dropdown from '../Dropdown/Dropdown';
+import{FcHome} from 'react-icons/fc';  
+import{RiProductHuntLine} from 'react-icons/ri'; 
+import{RiCustomerService2Line} from 'react-icons/ri'; 
+import{GrBusinessService} from 'react-icons/gr'; 
+import{GoSignIn} from 'react-icons/go' ; 
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -39,7 +44,26 @@ function Navbar() {
         <ul className={click ? 'nav-menu active' : 'nav-menu'}>
           <li className='nav-item'>
             <Link to='/' className='nav-links' onClick={closeMobileMenu}>
-              Home
+            <FcHome size={18}/>
+            </Link>
+          </li>
+          
+          <li className='nav-item'>
+            <Link
+              to='/products'
+              className='nav-links'
+              onClick={closeMobileMenu}
+            >
+              <RiProductHuntLine size={18}/>
+            </Link>
+          </li>
+          <li className='nav-item'>
+            <Link
+              to='/contact-us'
+              className='nav-links'
+              onClick={closeMobileMenu}
+            >
+              <RiCustomerService2Line size={18}/>
             </Link>
           </li>
           <li
@@ -52,27 +76,10 @@ function Navbar() {
               className='nav-links'
               onClick={closeMobileMenu}
             >
-              Services <i className='fas fa-caret-down' />
+              <GrBusinessService size={18}/>
+              <i className='fas fa-caret-down' />
             </Link>
             {dropdown && <Dropdown />}
-          </li>
-          <li className='nav-item'>
-            <Link
-              to='/products'
-              className='nav-links'
-              onClick={closeMobileMenu}
-            >
-              Products
-            </Link>
-          </li>
-          <li className='nav-item'>
-            <Link
-              to='/contact-us'
-              className='nav-links'
-              onClick={closeMobileMenu}
-            >
-              Contact Us
-            </Link>
           </li>
           <li>
             <Link
@@ -80,7 +87,7 @@ function Navbar() {
               className='nav-links-mobile'
               onClick={closeMobileMenu}
             >
-              Sign Up
+              <GoSignIn size={18}/>
             </Link>
           </li>
         </ul>
