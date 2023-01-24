@@ -1,34 +1,46 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import { Link } from "react-router-dom";
 
-const StyledNavbar = styled.nav`
-  background-color: #333;
-  color: #fff;
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem;
-`;
+// const styles = {
+//   dog: {
+//     backgroundColor: "green",
+//     color: "red",
+//     // fontFamily: "cursive"
+//   }
+// }
 
-const NavList = styled.ul`
-  list-style: none;
-  display: flex;
-`;
+// const StyledNavbar = styled.nav`
+//   background-color: #333;
+//   color: #fff;
+//   display: flex;
+//   justify-content: space-between;
+//   padding: 1rem;
+// `;
 
-const NavListItem = styled.li`
-  margin-right: 1rem;
-`;
+// const NavList = styled.ul`
+//   list-style: none;
+//   display: flex;
+// `;
+
+// const NavListItem = styled.li`
+//   margin-right: 1rem;
+// `;
 class Navbar extends Component {
     render() {
       return (
-        <StyledNavbar>
-          <h1>My Stores</h1>
-          <NavList>
+        <div>
+        {/* <StyledNavbar> */}
+          <h1 className='store'>My Stores</h1>
+          <Link to = "/">Home</Link>
+          <Link to = "/profile">Profile</Link>
+          {/* <NavList>
             <NavListItem><Link to="/">Home</Link></NavListItem>
             <NavListItem><Link to="/about">About</Link></NavListItem>
             <NavListItem><Link to="/contact">Contact</Link></NavListItem>
-          </NavList>
-        </StyledNavbar>
+          </NavList> */}
+        {/* </StyledNavbar> */}
+        </div>
       );
     }
   }
