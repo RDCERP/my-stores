@@ -55,7 +55,7 @@ const Navbar = () => {
               cursor: "pointer",
             },
           }}>
-          Sociopedia
+          MyStores
         </Typography>
         {isNonMobileScreens && (
           <FlexBetween
