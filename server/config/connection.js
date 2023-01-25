@@ -1,8 +1,11 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/project-3', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/my-stores',
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
 
-module.exports = mongoose.connection;
+export default mongoose.connection;
