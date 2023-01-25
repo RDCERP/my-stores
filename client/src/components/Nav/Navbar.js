@@ -7,6 +7,7 @@ import{FcHome} from 'react-icons/fc';
 import{RiProductHuntLine} from 'react-icons/ri'; 
 import{RiCustomerService2Line} from 'react-icons/ri'; 
 import{GrBusinessService} from 'react-icons/gr'; 
+
 // import{GoSignIn} from 'react-icons/go' ; 
 
 function Navbar() {
@@ -31,6 +32,7 @@ function Navbar() {
       setDropdown(false);
     }
   };
+  
 
   return (
     <>
