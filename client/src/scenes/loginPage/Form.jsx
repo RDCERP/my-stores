@@ -117,7 +117,11 @@ const Form = () => {
         setFieldValue,
         resetForm,
       }) => (
-        <form onSubmit={handleSubmit}>
+        <form
+          action="/upload"
+          method="POST"
+          encType="multipart/form-data"
+          onSubmit={handleSubmit}>
           <Box
             display="grid"
             gap="30px"

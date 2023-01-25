@@ -1,6 +1,6 @@
-import User from '../models/User';
+import User from '../models/User.js';
 
-// READ
+/* READ */
 export const getUser = async (req, res) => {
   try {
     const { id } = req.params;
@@ -29,14 +29,13 @@ export const getUserFriends = async (req, res) => {
         picturePath,
       })
     );
-
     res.status(200).json(formattedFriends);
   } catch (err) {
     res.status(404).json({ message: err.message });
   }
 };
 
-// UPDATE
+/* UPDATE */
 export const addRemoveFriend = async (req, res) => {
   try {
     const { id, friendId } = req.params;

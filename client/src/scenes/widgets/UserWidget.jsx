@@ -5,7 +5,7 @@ import {
   WorkOutlineOutlined,
 } from "@mui/icons-material";
 import { Box, Typography, Divider, useTheme } from "@mui/material";
-import UserImage from "/components/UserImage";
+import UserImage from "components/UserImage";
 import FlexBetween from "components/FlexBetween";
 import WidgetWrapper from "components/WidgetWrapper";
 import { useSelector } from "react-redux";
@@ -22,20 +22,21 @@ const UserWidget = ({ userId, picturePath }) => {
   const main = palette.neutral.main;
 
   const getUser = async () => {
-    const response = await fetch(`http://localhost:3001/users/${userId}`,
-      {
-        method: "GET",
-        headers: { Authorization: `Bearer ${token}` },
-      });
+    const response = await fetch(`http://localhost:3001/users/${userId}`, {
+      method: "GET",
+      headers: { Authorization: `Bearer ${token}` },
+    });
     const data = await response.json();
     setUser(data);
   };
 
   useEffect(() => {
     getUser();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  if (!user) { return null; }
+  if (!user) {
+    return null;
+  }
 
   const {
     firstName,
@@ -114,6 +115,7 @@ const UserWidget = ({ userId, picturePath }) => {
         <Typography fontSize="1rem" color={main} fontWeight="500" mb="1rem">
           Social Profiles
         </Typography>
+
         <FlexBetween gap="1rem" mb="0.5rem">
           <FlexBetween gap="1rem">
             <img src="../assets/twitter.png" alt="twitter" />
@@ -132,7 +134,7 @@ const UserWidget = ({ userId, picturePath }) => {
             <img src="../assets/linkedin.png" alt="linkedin" />
             <Box>
               <Typography color={main} fontWeight="500">
-                LinkedIn
+                Linkedin
               </Typography>
               <Typography color={medium}>Network Platform</Typography>
             </Box>
