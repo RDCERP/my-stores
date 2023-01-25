@@ -1,47 +1,99 @@
-import React from "react";
-import "./Footer.css";
+import React from 'react';
+import '../Footer/Footer.css';
 
-function Footer() {
+import {
+  MDBFooter,
+  MDBContainer,
+  MDBIcon,
+  MDBBtn
+} from 'mdb-react-ui-kit';
+
+ const Footer = () =>  {
   return (
-    <div className="main-footer">
-      <div className="container">
-        <div className="row">
-          {/* Column1 */}
-          <div className="col">
-            <h4>THICC MEMES INC</h4>
-            <h1 className="list-unstyled">
-              <li>**********</li>
-              <li>Houston, Texas</li>
-            </h1>
-          </div>
-          {/* Column2 */}
-          <div className="col">
-            <h4>Stuff</h4>
-            <ui className="list-unstyled">
-              <li>DANK MEMES</li>
-              <li>OTHER STUFF</li>
-              <li>GUD STUFF</li>
-            </ui>
-          </div>
-          {/* Column3 */}
-          <div className="col">
-            <h4>WELL ANOTHER COLUMN</h4>
-            <ui className="list-unstyled">
-              <li>DANK MEMES</li>
-              <li>OTHER STUFF</li>
-              <li>GUD STUFF</li>
-            </ui>
-          </div>
-        </div>
-        <hr />
-        <div className="row">
-          <p className="col-sm">
-            &copy;{new Date().getFullYear()} THICC MEMES | All rights reserved |
-            Terms Of Service | Privacy
-          </p>
-        </div>
-      </div>
+    <MDBFooter className='test text-center text-white' style={{ backgroundColor: '#f1f1f1' }}>
+    <MDBContainer className=' MDB-container' >
+      <section className='mb-4 footer-container'>
+        <MDBBtn
+          rippleColor="dark"
+          color='link'
+          floating
+          size="lg"
+          className='text-dark m-1'
+          href='#!'
+          role='button'
+        >
+          <MDBIcon fab className='fab fa-facebook-f' />
+        </MDBBtn>
+
+        {/* <MDBBtn
+          rippleColor="dark"
+          color='link'
+          floating
+          size="lg"
+          className='text-dark m-1'
+          href='#!'
+          role='button'
+        >
+          <MDBIcon fab className='fa-twitter' />
+        </MDBBtn> */}
+
+        <MDBBtn
+          rippleColor="dark"
+          color='link'
+          floating
+          size="lg"
+          className='text-dark m-1'
+          href='#!'
+          role='button'
+        >
+          <MDBIcon fab className='fa-google' />
+        </MDBBtn>
+
+        <MDBBtn
+          rippleColor="dark"
+          color='link'
+          floating
+          size="lg"
+          className='text-dark m-1'
+          href='#!'
+          role='button'
+        >
+          <MDBIcon fab className='fa-instagram' />
+        </MDBBtn>
+
+        <MDBBtn
+          rippleColor="dark"
+          color='link'
+          floating
+          size="lg"
+          className='text-dark m-1'
+          href='#!'
+          role='button'
+        >
+          <MDBIcon fab className='fa-linkedin' />
+        </MDBBtn>
+
+        <MDBBtn
+          rippleColor="dark"
+          color='link'
+          floating
+          size="lg"
+          className='text-dark m-1'
+          href='#!'
+          role='button'
+        >
+          <MDBIcon fab className='fa-github' />
+        </MDBBtn>
+      </section>
+    </MDBContainer>
+
+    <div className='text-center text-dark p-3 copy-right-footer'>
+    &copy; {new Date().getFullYear()} Copyright:
+      <a className='text-dark' href='https://mdbootstrap.com/'>
+        MDBootstrap.com
+      </a>
     </div>
+  </MDBFooter>
   );
 }
 
