@@ -1,5 +1,5 @@
 import React, { useState} from 'react';
-import { Button } from '../Button/Button';
+// import { Button } from '../Button/Button';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import Dropdown from '../Dropdown/Dropdown';
@@ -7,7 +7,7 @@ import{FcHome} from 'react-icons/fc';
 import{RiProductHuntLine} from 'react-icons/ri'; 
 import{RiCustomerService2Line} from 'react-icons/ri'; 
 import{GrBusinessService} from 'react-icons/gr'; 
-import{GoSignIn} from 'react-icons/go' ; 
+// import{GoSignIn} from 'react-icons/go' ; 
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -81,7 +81,7 @@ function Navbar() {
             </Link>
             {dropdown && <Dropdown />}
           </li>
-          <li>
+          {/* <li>
             <Link
               to='/sign-up'
               className='nav-links-mobile'
@@ -89,9 +89,9 @@ function Navbar() {
             >
               <GoSignIn size={18}/>
             </Link>
-          </li>
+          </li> */}
         </ul>
-        <Button />
+        {/* <Button /> */}
       </nav>
     </>
   );
