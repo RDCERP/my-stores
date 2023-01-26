@@ -6,35 +6,27 @@ const typeDefs = gql`
     firstName: String
     lastName: String
     email: String
-    password: String
-    picturePath: String
+    friendCount: Int
     friends: [User]
-    location: String
-    occupation: String
-    viewedProfile: Int
-    impressions: Int
-    createdAt: String
+    posts: [Post]
   }
 
   type Post {
     _id: ID
-    userId: String
+    postText: String
+    createdAt: String
     firstName: String
     lastName: String
-    location: String
-    description: String
-    picturePath: String
-    userPicturePath: String
-    likes: [String]
+    commentCount: Int
     comments: [Comment]
-    createdAt: String
   }
 
   type Comment {
     _id: ID
-    commentText: String
     createdAt: String
-    username: String
+    commentText: String
+    firstName: String
+    lastName: String
   }
 
   type Auth {
@@ -45,9 +37,9 @@ const typeDefs = gql`
   type Query {
     me: User
     users: [User]
-    user(username: String!): User
+    user(userId: ID!): User
     posts(username: String): [Post]
-    post(_id: ID!): Post
+    post(postId: ID!): Post
   }
 
   type Mutation {
@@ -58,9 +50,10 @@ const typeDefs = gql`
       email: String!
       password: String!
     ): Auth
-    addPost(description: String!, picturePath: String!): Post
+    addPost(postText: String!): Post
     addComment(postId: ID!, commentText: String!): Post
     addFriend(friendId: ID!): User
+    removeFriend(friendId: ID!): User
   }
 `;
 

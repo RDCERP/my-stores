@@ -1,7 +1,12 @@
-import mongoose from 'mongoose';
+import { Schema, model } from 'mongoose';
+import bcrypt from 'bcrypt';
 
-const UserSchema = new mongoose.Schema(
+const UserSchema = new Schema(
   {
+    id: {
+      type: String,
+      required: true,
+    },
     firstName: {
       type: String,
       required: true,
@@ -41,5 +46,24 @@ const UserSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const User = mongoose.model('User', UserSchema);
+// set up pre-save middleware to create password
+UserSchema.pre('save', async function (next) {
+  if (this.isNew || this.isModified('password')) {
+    const saltRounds = 10;
+    this.password = await bcrypt.hash(this.password, saltRounds);
+  }
+
+  next();
+});
+
+// compare the incoming password with the hashed password
+UserSchema.methods.isCorrectPassword = async function (password) {
+  return bcrypt.compare(password, this.password);
+};
+
+UserSchema.virtual('friendCount').get(function () {
+  return this.friends.length;
+});
+
+const User = model('User', UserSchema);
 export default User;

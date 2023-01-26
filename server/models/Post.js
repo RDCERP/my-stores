@@ -1,6 +1,7 @@
-import mongoose from 'mongoose';
+import { Schema, model } from 'mongoose';
+import Comment from './Comment.js';
 
-const postSchema = new mongoose.Schema(
+const PostSchema = new Schema(
   {
     userId: {
       type: String,
@@ -22,14 +23,19 @@ const postSchema = new mongoose.Schema(
       type: Map,
       of: Boolean,
     },
-    comments: {
-      type: Array,
-      default: [],
-    },
+    comments: [Comment.schema],
   },
-  { timestamps: true }
+  { timestamps: true },
+  {
+    toJSON: {
+      getters: true,
+    },
+  }
 );
 
-const Post = mongoose.model('Post', postSchema);
+PostSchema.virtual('commentCount').get(function () {
+  return this.comments.length;
+});
 
+const Post = model('Post', PostSchema);
 export default Post;

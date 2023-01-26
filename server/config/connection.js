@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-mongoose.connect(
+const db = mongoose.createConnection(
   process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/my-stores',
   {
     useNewUrlParser: true,
@@ -8,4 +8,4 @@ mongoose.connect(
   }
 );
 
-export default mongoose.connection;
+export default db;

@@ -1,8 +1,7 @@
-import bcrypt from 'bcrypt'; // encrypt password
-import jwt from 'jsonwebtoken'; // create token
-import User from '../models/User.js'; // import User model
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import User from '../models/User.js';
 
-// REGISTER USER
 export const register = async (req, res) => {
   try {
     const {
@@ -28,8 +27,8 @@ export const register = async (req, res) => {
       friends,
       location,
       occupation,
-      viedProfile: Math.floor(Math.random() * 10000),
-      impressions: Math.floor(Math.random() * 10000),
+      viewedProfile: 0,
+      impressions: 0,
     });
     const savedUser = await newUser.save(); // save user to database
     res.status(201).json(savedUser); // send user to client
