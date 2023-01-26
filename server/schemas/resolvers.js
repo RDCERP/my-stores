@@ -1,6 +1,6 @@
-import { AuthenticationError } from 'apollo-server-express';
-import User from '../models/User.js';
-import Post from '../models/Post.js';
+const { AuthenticationError } = require ( 'apollo-server-express');
+const User = require ( '../models/User.js');
+const Post = require ( '../models/Post.js');
 // import { verifyToken } from '../controllers/middleware/auth';
 
 const resolvers = {
@@ -73,4 +73,4 @@ const resolvers = {
   },
 };
 
-export default resolvers;
+module.exports =  resolvers;
