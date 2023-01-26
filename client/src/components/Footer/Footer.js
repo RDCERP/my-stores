@@ -13,13 +13,15 @@ import {
     <MDBFooter className='test text-center text-white' style={{ backgroundColor: '#f1f1f1' }}>
     <MDBContainer className=' MDB-container' >
       <section className='mb-4 footer-container'>
+        
         <MDBBtn
           rippleColor="dark"
           color='link'
           floating
           size="lg"
           className='text-dark m-1'
-          href='#!'
+          href='https://www.facebook.com/profile.php?id=100089544920569'
+          target="_blank"
           role='button'
         >
           <MDBIcon fab className='fab fa-facebook-f' />
@@ -31,7 +33,8 @@ import {
           floating
           size="lg"
           className='text-dark m-1'
-          href='#!'
+          href='https://www.facebook.com/profile.php?id=100089544920569'
+          target="_blank"
           role='button'
         >
           <MDBIcon fab className='fa-twitter' />
@@ -43,7 +46,8 @@ import {
           floating
           size="lg"
           className='text-dark m-1'
-          href='#!'
+          href="mailto:group.three.p3g3@gmail.com"
+          target="_blank"
           role='button'
         >
           <MDBIcon fab className='fa-google' />
@@ -79,18 +83,22 @@ import {
           floating
           size="lg"
           className='text-dark m-1'
-          href='#!'
+          href='https://www.linkedin.com/in/mohammadreza-memar-653132149/'
+          target="_blank"
           role='button'
         >
+          
           <MDBIcon fab className='fa-github' />
+          
+          
         </MDBBtn>
       </section>
     </MDBContainer>
 
     <div className='text-center text-dark p-3 copy-right-footer'>
     &copy; {new Date().getFullYear()} Copyright:
-      <a className='text-dark' href='https://mdbootstrap.com/'>
-        MDBootstrap.com
+      <a className='text-dark' href='https://my-stores.herokuapp.com/'>
+      https://my-stores.herokuapp.com/
       </a>
     </div>
   </MDBFooter>
