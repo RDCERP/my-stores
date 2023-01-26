@@ -20,7 +20,7 @@ import {
           floating
           size="lg"
           className='text-dark m-1'
-          href='https://www.facebook.com/profile.php?id=100089544920569'
+          href='https://www.facebook.com/profile.php?id=100089686995525'
           target="_blank"
           role='button'
         >
@@ -53,7 +53,7 @@ import {
           <MDBIcon fab className='fa-google' />
         </MDBBtn>
 
-        <MDBBtn
+        {/* <MDBBtn
           rippleColor="dark"
           color='link'
           floating
@@ -63,9 +63,9 @@ import {
           role='button'
         >
           <MDBIcon fab className='fa-instagram' />
-        </MDBBtn>
+        </MDBBtn> */}
 
-        <MDBBtn
+        {/* <MDBBtn
           rippleColor="dark"
           color='link'
           floating
@@ -75,7 +75,7 @@ import {
           role='button'
         >
           <MDBIcon fab className='fa-linkedin' />
-        </MDBBtn>
+        </MDBBtn> */}
 
         <MDBBtn
           rippleColor="dark"
@@ -83,7 +83,7 @@ import {
           floating
           size="lg"
           className='text-dark m-1'
-          href='https://www.linkedin.com/in/mohammadreza-memar-653132149/'
+          href='https://github.com/RDCERP/my-stores'
           target="_blank"
           role='button'
         >
