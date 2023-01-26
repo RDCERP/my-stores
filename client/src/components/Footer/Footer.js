@@ -27,18 +27,6 @@ import {
           <MDBIcon fab className='fab fa-facebook-f' />
         </MDBBtn>
 
-        {/* <MDBBtn
-          rippleColor="dark"
-          color='link'
-          floating
-          size="lg"
-          className='text-dark m-1'
-          href='https://www.facebook.com/profile.php?id=100089544920569'
-          target="_blank"
-          role='button'
-        >
-          <MDBIcon fab className='fa-twitter' />
-        </MDBBtn> */}
 
         <MDBBtn
           rippleColor="dark"
@@ -52,30 +40,6 @@ import {
         >
           <MDBIcon fab className='fa-google' />
         </MDBBtn>
-
-        {/* <MDBBtn
-          rippleColor="dark"
-          color='link'
-          floating
-          size="lg"
-          className='text-dark m-1'
-          href='#!'
-          role='button'
-        >
-          <MDBIcon fab className='fa-instagram' />
-        </MDBBtn> */}
-
-        {/* <MDBBtn
-          rippleColor="dark"
-          color='link'
-          floating
-          size="lg"
-          className='text-dark m-1'
-          href='#!'
-          role='button'
-        >
-          <MDBIcon fab className='fa-linkedin' />
-        </MDBBtn> */}
 
         <MDBBtn
           rippleColor="dark"

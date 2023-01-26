@@ -8,7 +8,6 @@ import{RiProductHuntLine} from 'react-icons/ri';
 import{RiCustomerService2Line} from 'react-icons/ri'; 
 import{GrBusinessService} from 'react-icons/gr'; 
 
-// import{GoSignIn} from 'react-icons/go' ; 
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -83,17 +82,7 @@ function Navbar() {
             </Link>
             {dropdown && <Dropdown />}
           </li>
-          {/* <li>
-            <Link
-              to='/sign-up'
-              className='nav-links-mobile'
-              onClick={closeMobileMenu}
-            >
-              <GoSignIn size={18}/>
-            </Link>
-          </li> */}
         </ul>
-        {/* <Button /> */}
       </nav>
     </>
   );
@@ -103,27 +92,3 @@ export default Navbar;
 
 
 
-
-
-
-
-// //index.js
-// import React, { Component } from 'react';
-// import { Link } from "react-router-dom";
-// import './style.css'
-
-
-// class Navbar extends Component {
-//     render() {
-//       return (
-//         <div>
-//           <h1 className='store'>My Stores</h1>
-//           <Link to = "/">Home</Link>
-//           <Link to = "/profile">Profile</Link>
-  
-//         </div>
-//       );
-//     }
-//   }
-
-//   export default Navbar;
