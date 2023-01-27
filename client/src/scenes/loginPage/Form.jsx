@@ -118,9 +118,9 @@ const Form = () => {
         resetForm,
       }) => (
         <form
-          action="/upload"
-          method="POST"
-          encType="multipart/form-data"
+          // action="/upload"
+          // method="POST"
+          // encType="multipart/form-data"
           onSubmit={handleSubmit}>
           <Box
             display="grid"

@@ -1,4 +1,5 @@
-const User = require('./User');
-const Post = require('./Post');
+import User from './User.js';
+import Post from './Post.js';
+import Comment from './Comment.js';
 
-module.exports = { User, Post };
+export { User, Post, Comment };

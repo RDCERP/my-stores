@@ -1,8 +1,7 @@
-import bcrypt from 'bcrypt'; // encrypt password
-import jwt from 'jsonwebtoken'; // create token
-import User from '../models/User.js'; // import User model
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import User from '../models/User.js';
 
-// REGISTER USER
 export const register = async (req, res) => {
   try {
     const {
@@ -10,7 +9,7 @@ export const register = async (req, res) => {
       lastName,
       email,
       password,
-      picturePath,
+      // picturePath,
       friends,
       location,
       occupation,
@@ -19,17 +18,21 @@ export const register = async (req, res) => {
     const salt = await bcrypt.genSalt(); // generate encryption
     const passwordHash = await bcrypt.hash(password, salt); // encrypt password
 
+    const { file } = req;
+
+    const picturePath = file ? file.path : '';
+
     const newUser = new User({
       firstName,
       lastName,
       email,
-      password: passwordHash,
+      password,
       picturePath,
       friends,
       location,
       occupation,
-      viedProfile: Math.floor(Math.random() * 10000),
-      impressions: Math.floor(Math.random() * 10000),
+      viewedProfile: 0,
+      impressions: 0,
     });
     const savedUser = await newUser.save(); // save user to database
     res.status(201).json(savedUser); // send user to client
