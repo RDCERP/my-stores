@@ -1,7 +1,7 @@
 import { Box, useMediaQuery } from "@mui/material";
 import { useSelector } from "react-redux";
 import Navbar from "scenes/navbar";
-import Footer from "scenes/footer/Footer.jsx";
+// import Footer from "scenes/footer/Footer";
 import UserWidget from "scenes/widgets/UserWidget";
 import MyPostWidget from "scenes/widgets/MyPostWidget";
 import PostsWidget from "scenes/widgets/PostsWidget";
@@ -37,7 +37,7 @@ const HomePage = () => {
           </Box>
         )}
       </Box>
-    <Footer />
+    {/* <Footer /> */}
   </Box>
   );
 }
