@@ -10,9 +10,10 @@ import { fileURLToPath } from 'url';
 import { ApolloServer } from 'apollo-server-express';
 
 import { typeDefs, resolvers } from './schemas/index.js';
-import { register } from './controllers/auth.js';
+import { register, login } from './controllers/auth.js';
 import { createPost } from './controllers/posts.js';
 import { authMiddleware } from './utils/auth.js';
+
 import db from './config/connection.js';
 
 const PORT = process.env.PORT || 3001;
@@ -25,7 +26,7 @@ const server = new ApolloServer({
 // CONFIGURATIONS
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-dotenv.config();
+
 const app = express();
 app.use(express.json());
 app.use(helmet());
@@ -51,6 +52,7 @@ const upload = multer({ storage });
 
 // ROUTES WITH FILES
 app.post('/auth/register', upload.single('picture'), register);
+app.post('/auth/login', login);
 app.post('/posts', authMiddleware, upload.single('picture'), createPost);
 
 // SERVE UP STATIC ASSETS

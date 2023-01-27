@@ -3,10 +3,10 @@ import bcrypt from 'bcrypt';
 
 const UserSchema = new Schema(
   {
-    id: {
-      type: String,
-      required: true,
-    },
+    // id: {
+    //   type: String,
+    //   // required: true,
+    // },
     firstName: {
       type: String,
       required: true,
@@ -28,7 +28,7 @@ const UserSchema = new Schema(
     password: {
       type: String,
       required: true,
-      min: 5,
+      min: 1,
     },
     picturePath: {
       type: String,
