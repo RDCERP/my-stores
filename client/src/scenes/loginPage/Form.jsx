@@ -23,7 +23,8 @@ const registerSchema = yup.object().shape({
   password: yup.string().required("required"),
   location: yup.string().required("required"),
   occupation: yup.string().required("required"),
-  picture: yup.string().required("required"),
+  // picture: yup.string().required("required"),
+  picturePath: yup.string().required("required"),
 });
 
 const loginSchema = yup.object().shape({
@@ -38,7 +39,8 @@ const initialValuesRegister = {
   password: "",
   location: "",
   occupation: "",
-  picture: "",
+  // picture: "",
+  picturePath: "",
 };
 
 const initialValuesLogin = {
@@ -56,13 +58,15 @@ const Form = () => {
   const isRegister = pageType === "register";
 
   const register = async (values, onSubmitProps) => {
+    console.log("here")
     // this allows us to send form info with image
     const formData = new FormData();
     for (let value in values) {
       formData.append(value, values[value]);
     }
-    formData.append("picturePath", values.picture.name);
+    // formData.append("picturePath", values.picture.name);
 
+    console.log(formData)
     const savedUserResponse = await fetch(
       "http://localhost:3001/auth/register",
       {
@@ -70,6 +74,7 @@ const Form = () => {
         body: formData,
       }
     );
+    console.log(savedUserResponse)
     const savedUser = await savedUserResponse.json();
     onSubmitProps.resetForm();
 
@@ -175,7 +180,19 @@ const Form = () => {
                   helperText={touched.occupation && errors.occupation}
                   sx={{ gridColumn: "span 4" }}
                 />
-                <Box
+                <TextField
+                  label="Picture Link"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.picturePath}
+                  name="picturePath"
+                  error={
+                    Boolean(touched.picturePath) && Boolean(errors.picturePath)
+                  }
+                  helperText={touched.picturePath && errors.picturePath}
+                  sx={{ gridColumn: "span 4" }}
+                />
+                {/* <Box
                   gridColumn="span 4"
                   border={`1px solid ${palette.neutral.medium}`}
                   borderRadius="5px"
@@ -204,7 +221,7 @@ const Form = () => {
                       </Box>
                     )}
                   </Dropzone>
-                </Box>
+                </Box> */}
               </>
             )}
 

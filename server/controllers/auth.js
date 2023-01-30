@@ -9,7 +9,7 @@ export const register = async (req, res) => {
       lastName,
       email,
       password,
-      // picturePath,
+      picturePath,
       friends,
       location,
       occupation,
@@ -18,9 +18,9 @@ export const register = async (req, res) => {
     const salt = await bcrypt.genSalt(); // generate encryption
     const passwordHash = await bcrypt.hash(password, salt); // encrypt password
 
-    const { file } = req;
+    // const { file } = req;
 
-    const picturePath = file ? file.path : '';
+    // const picturePath = file ? file.path : '';
 
     const newUser = new User({
       firstName,
