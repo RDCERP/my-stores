@@ -57,8 +57,9 @@ function App() {
               element={isAuth ? <HomePage /> : <Navigate to="/" />}
             />
             <Route
-              path="/profile/:userId"
-              element={isAuth ? <ProfilePage /> : <Navigate to="/" />}
+              path="/profile"
+              // element={isAuth ? <ProfilePage /> : <Navigate to="/" />}
+              element={<ProfilePage />}
             />
           </Routes>
         </ThemeProvider>

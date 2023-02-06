@@ -12,6 +12,7 @@ import { ApolloServer } from 'apollo-server-express';
 import { typeDefs, resolvers } from './schemas/index.js';
 import { register, login } from './controllers/auth.js';
 import { createPost } from './controllers/posts.js';
+import { getUserFriends, addRemoveFriend } from './controllers/users.js';
 import { authMiddleware } from './utils/auth.js';
 
 import db from './config/connection.js';
@@ -51,9 +52,12 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // ROUTES WITH FILES
+app.get('/users/:id/friends', authMiddleware, getUserFriends)
 app.post('/auth/register', upload.single('picture'), register);
 app.post('/auth/login', login);
 app.post('/posts', authMiddleware, upload.single('picture'), createPost);
+app.put('/api/users/:id/:friendId', authMiddleware, addRemoveFriend);
+
 
 // SERVE UP STATIC ASSETS
 if (process.env.NODE_ENV === 'production') {
@@ -65,18 +69,15 @@ app.get('*', (req, res) => {
 });
 
 // Create a new instance of an Apollo server with the GraphQL schema
-const startApolloServer = async (typeDefs, resolvers) => {
-  await server.start();
-  server.applyMiddleware({ app });
+// const startApolloServer = async (typeDefs, resolvers) => {
+//   await server.start();
+//   server.applyMiddleware({ app });
 
   db.once('open', () => {
     app.listen(PORT, () => {
       console.log(`API server running on port ${PORT}!`);
-      console.log(
-        `Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`
-      );
     });
   });
-};
+// };
 
-startApolloServer(typeDefs, resolvers);
+// startApolloServer(typeDefs, resolvers);

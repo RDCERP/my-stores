@@ -55,6 +55,7 @@ export const login = async (req, res) => {
     delete user.password; // delete password from user object
     res.status(200).json({ token, user }); // send token and user to client
   } catch (err) {
+    console.log(err)
     res.status(500).json({ error: err.message }); // mongoDB error send to client
   }
 };
